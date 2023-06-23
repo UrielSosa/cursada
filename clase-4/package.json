@@ -1,0 +1,15 @@
+{
+  "name": "clase-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aplicacion.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pokemon": "^2.3.5"
+  }
+}
