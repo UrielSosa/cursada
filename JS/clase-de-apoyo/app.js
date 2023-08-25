@@ -2,7 +2,8 @@
 const express = require('express');
 //Este require me devuelve una funcion que TIENE que ser ejecutada para crear el servidor.
 const servidor = express();
-
+const ropaRouter = require('./routes/ropa')
+const baseRouter = require('./routes/base')
 
 //TODAS LAS RUTAS RECIBEN:
 //req (request)
@@ -11,13 +12,15 @@ const servidor = express();
 //Response es lo que le devuelve el servidor al cliente.
 
 //Ruta inicial localhost:3000 === localhost:3000/
-servidor.get('/', function (req, res){
-  res.send('PUBLICACIONES')
-})
+servidor.use(baseRouter)
+servidor.use('/ropa', ropaRouter);
+//Si quisiesemos mas rutas
+//servidor.use('/usuario', usuarioRouter);
+//servidor.use('/producto', productoRouter);
+//servidor.use('/', productoRouter);
 
-//Ruta con una subruta variable
-servidor.get('/ropa/:hola', function (req, res){
-  res.send('TODOS LOS ' + req.params.hola)
-})
 
-servidor.listen(3000)
+
+servidor.listen(3000, () => {
+  console.log('Corriendo el servidor')
+})
