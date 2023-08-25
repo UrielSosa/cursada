@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicacion de limpieza</title>
+</head>
+
+<body>
+    <header>
+        <h2>Sitio de limpieza</h2>
+    </header>
+    <main>
+        <section class="listado">
+
+        </section>
+        <section>
+            <article></article>
+            <article></article>
+            <article></article>
+            <article></article>
+        </section>
+    </main>
+    <footer></footer>
+    <script>
+        let listado = document.querySelector('.listado');
+
+        async function callFetch() {
+            try {
+                const res = await fetch('http://localhost:3000/products/listar')
+                const data = await res.json();
+                console.log(data);
+                // listado.innerHTML = `
+                // <article class="producto">
+                    //     <a href="">
+                    //         <img src="http://localhost:3000/images/${data.image}" width="200px" heigth="200px" alt="product-image">
+                    //         <h4>${data.name}</h4>
+                    //         <p>precio: ${data.price}</p>
+                    //     </a>
+                    // </article>`;  
+                    data.forEach(product => {
+                        listado.innerHTML += `
+                            <a href="">
+                                <article class="producto">
+                                    <img src="http://localhost:3000/images/${product.image}" width="200px" heigth="200px" alt="product-image">
+                                    <h4>${product.name}</h4>
+                                    <p>precio: ${product.price}</p>
+                                    </article>
+                                </a>`
+                    });
+            } catch(e) {
+                console.log(e);
+            }
+
+        }
+
+        let data = callFetch();
+        
+        console.log(listado);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+Aplicacion de productos de limpieza
+- Se requiere poder mostrar en json la información de la "db" (productos de limpieza)
+- Se requiere poder mostrar un solo producto de limpieza en json

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Palangana",
+        "price": 1200,
+        "image": "img-heladera-whirpool.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Escoba",
+        "price": 500,
+        "image": "img-laptop-lenovo.jpg"
+    }
+]
