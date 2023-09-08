@@ -1,6 +1,10 @@
 import Nav from './Nav';
 import { links } from '../../helpers/utils';
 
+import logo from './assets/img/logo-mercado-liebre.svg';
+import './assets/css/header.css';
+
+
 function Header() {
   return (
     <header className="main-header">
@@ -9,7 +13,7 @@ function Header() {
           <div className="col-5 col-md-2">
             <a href="index.html" className="main-header_home-link">
               <img
-                src="../images/logo-mercado-liebre.svg"
+                src={logo}
                 alt="logo mercadoliebre"
               />
             </a>
