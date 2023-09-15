@@ -1,7 +1,10 @@
 import { useRef } from "react";
+import { Link } from 'react-router-dom';
 
 const CardProduct = ({ product, cart, setCart }) => {
   const button = useRef();
+  const imageUrl = `http://localhost:3001/images/products/${product.image}`;
+
 
   const addToCart = () => {
     console.log(button.current.id);
@@ -12,14 +15,15 @@ const CardProduct = ({ product, cart, setCart }) => {
     ];
     setCart(carNew);
   };
+  // const linkTo = '/detail/' + product._id;
 
   return (
     <div className="col-12 col-sm-6 col-lg-3">
       <section className="product-box">
-        <a href="/detail/">
+        <Link to={`/detail/${product._id}`}>
           <figure className="product-box_image">
             <img
-              src="./images/products/default-image.png"
+              src={imageUrl}
               alt="imagen de producto"
             />
           </figure>
@@ -29,7 +33,7 @@ const CardProduct = ({ product, cart, setCart }) => {
             <p>{product.name}</p>
             <i className="fas fa-truck" />
           </article>
-        </a>
+        </Link>
         <button id={product._id} onClick={addToCart} ref={button}>
           Add to cart
         </button>

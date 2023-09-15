@@ -1,11 +1,29 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Detail = () => {
+  const [product, setProduct] = useState({});
+  const { id } = useParams();
+
+
+  const getProduct = () => {
+    fetch(`http://localhost:3001/products/${id}`)
+      .then(res => res.json())
+      .then(product => {
+        setProduct(product);
+      })
+      .catch(error => console.log(error))
+  }
+
+  useEffect(getProduct, [id]);
+
+
   return (
     <div className="container products-wrapper">
       <div className="row">
         <div className="col-12">
           <h2 className="products-title">
-            Detalle del producto: NOMBRE DEL PRODUCTO
+            Detalle del producto: {product.name}
           </h2>
         </div>
       </div>
@@ -13,20 +31,19 @@ const Detail = () => {
         <div className="row">
           <div className="col-12 col-lg-8">
             <img
-              src="./images/products/default-image.png"
+              src={`http://localhost:3001/images/products/${product.image}`}
               alt="product"
               className="product-detail-img"
             />
-            <p className="product-detail-description">PRODUCT DESCRIPTION</p>
+            <p className="product-detail-description">{product.description}</p>
           </div>
           <div className="col-12 col-lg-4">
             <article className="product-detail-info">
-              <h2 className="product-detail-title">PRODUCT NAME</h2>
+              <h2 className="product-detail-title">{product.name}</h2>
               <p className="product-detail-price small">
-                <span>$PRICE</span>/<b>DISCOUNT% OFF</b>
+                <span>${product.price}</span>/<b>{product.discount}% OFF</b>
               </p>
-              <p className="product-detail-price">$FINAL PRICE</p>
-              <p className="product-detail-price">$PRICE</p>
+              <p className="product-detail-price">${product.price - (product.price * (product.discount /100))}</p>
               <ul className="actions-list">
                 <li>
                   <i className="fas fa-credit-card" />
